@@ -147,4 +147,22 @@ const rateLimiter = (options = {}) => {
   });
 };
 
-module.exports = rateLimiter;
+// Common presets used throughout the API
+const strictRateLimiter = rateLimiter({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: 'Too many requests. Please try again later.'
+});
+
+const loginRateLimiter = rateLimiter({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: 'Too many login attempts. Please try again later.'
+});
+
+module.exports = Object.assign(rateLimiter, {
+  rateLimiter,
+  strictRateLimiter,
+  loginRateLimiter,
+  MemoryStore
+});

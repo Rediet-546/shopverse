@@ -96,6 +96,15 @@ const validationRules = {
   category: () => body('category')
     .notEmpty().withMessage('Category is required')
     .trim(),
+
+  productId: () => body('productId')
+    .notEmpty().withMessage('Product ID is required')
+    .isMongoId().withMessage('Invalid product ID format'),
+
+  rating: () => body('rating')
+    .notEmpty().withMessage('Rating is required')
+    .isInt({ min: 1, max: 5 }).withMessage('Rating must be between 1 and 5')
+    .toInt(),
   
   quantity: () => body('quantity')
     .notEmpty().withMessage('Quantity is required')
@@ -122,8 +131,20 @@ const validationRules = {
   ],
   
   // ID validation
-  id: () => param('id')
-    .isMongoId().withMessage('Invalid ID format'),
+  id: (field = 'id') => param(field)
+    .isMongoId().withMessage(`Invalid ${field} format`),
+
+  orderId: () => body('orderId')
+    .notEmpty().withMessage('Order ID is required')
+    .isMongoId().withMessage('Invalid order ID format'),
+
+  paymentIntentId: () => body('paymentIntentId')
+    .notEmpty().withMessage('Payment intent ID is required')
+    .trim(),
+
+  paymentMethodId: () => body('paymentMethodId')
+    .notEmpty().withMessage('Payment method ID is required')
+    .trim(),
   
   // Pagination
   page: () => query('page')
@@ -140,6 +161,14 @@ const validationRules = {
   orderStatus: () => body('status')
     .isIn(['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled', 'refunded'])
     .withMessage('Invalid order status'),
+
+  role: () => body('role')
+    .isIn(['user', 'vendor', 'admin'])
+    .withMessage('Invalid role'),
+
+  pushToken: () => body('pushToken')
+    .notEmpty().withMessage('Push token is required')
+    .trim(),
   
   // Payment
   paymentMethod: () => body('paymentMethod')

@@ -12,10 +12,10 @@ const { connectRedis } = require('./config/redis');
 const { connectRabbitMQ } = require('./config/rabbitmq');
 
 // Import middleware
-const errorHandler = require('./middleware/errorHandler');
+const { errorHandler } = require('./middleware/errorHandler');
 const rateLimiter = require('./middleware/rateLimiter');
 const { requestLogger } = require('./middleware/logger');
-const securityHeaders = require('./middleware/security');
+const { securityHeaders } = require('./middleware/security');
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
