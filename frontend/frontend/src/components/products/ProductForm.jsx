@@ -16,11 +16,9 @@ import {
 } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { createProduct, updateProduct, fetchProduct } from '../../redux/slices/productSlice';
-import { fetchCategories } from '../../redux/slices/categorySlice';
 import Input from '../common/Input';
 import Button from '../common/Button';
 import Loader from '../common/Loader';
-import ImageUpload from '../common/ImageUpload';
 import '../../styles/products.css';
 
 const ProductForm = ({ mode = 'create', vendorMode = false }) => {

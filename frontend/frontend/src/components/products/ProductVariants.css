@@ -1,0 +1,51 @@
+.product-variants {
+  margin: var(--spacing-md) 0;
+}
+
+.variant-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.variant-group label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-right: var(--spacing-sm);
+}
+
+.variant-options {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xs);
+}
+
+.variant-btn {
+  padding: 6px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.variant-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.variant-btn.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.color-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+}

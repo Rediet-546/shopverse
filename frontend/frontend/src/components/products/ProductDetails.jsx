@@ -211,12 +211,6 @@ const ProductDetails = () => {
             <div className="product-actions">
               <div className="quantity-section">
                 <label>Quantity</label>
-                <QuantitySelector 
-                  value={quantity}
-                  onChange={setQuantity}
-                  max={product.stockQuantity}
-                  disabled={isOutOfStock}
-                />
                 <span className="stock-info">
                   {isOutOfStock ? (
                     <span className="out-of-stock">Out of Stock</span>

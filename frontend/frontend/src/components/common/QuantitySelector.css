@@ -1,0 +1,46 @@
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.quantity-selector .qty-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.quantity-selector .qty-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.quantity-selector .qty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-selector .qty-input {
+  width: 50px;
+  height: 32px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: var(--font-size-base);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.quantity-selector .qty-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}

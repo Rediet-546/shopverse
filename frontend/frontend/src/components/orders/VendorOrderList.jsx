@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { 
-  FaBox, 
-  FaSearch, 
-  FaFilter, 
-  FaEye,
-  FaCheck,
-  FaTimes,
-  FaTruck,
-  FaPackage,
-  FaCalendarAlt,
-  FaDownload,
-  FaSyncAlt
-} from 'react-icons/fa';
+// Replace with:
+import { FaBox, FaSearch, FaFilter, FaEye, FaCheck, FaTimes, FaTruck } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { fetchVendorOrders, updateOrderStatus } from '../../redux/slices/orderSlice';
 import OrderStatusBadge from './OrderStatusBadge';

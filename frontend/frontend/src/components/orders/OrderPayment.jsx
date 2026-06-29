@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCreditCard, FaPaypal, FaBank, FaMoneyBillWave, FaCheck, FaTimes } from 'react-icons/fa';
+import { FaCreditCard, FaPaypal, FaLandmark, FaMoneyBillWave, FaCheck, FaTimes, FaClock } from 'react-icons/fa';
 import { formatDate, formatCurrency } from '../../utils/helpers';
 import '../../styles/orders.css';
 
@@ -15,7 +15,7 @@ const OrderPayment = ({ order }) => {
       case 'paypal':
         return <FaPaypal />;
       case 'bank_transfer':
-        return <FaBank />;
+        return <FaLandmark />;
       case 'cod':
         return <FaMoneyBillWave />;
       default:

@@ -278,6 +278,195 @@
   color: var(--text-muted);
 }
 
+/* Activity Log */
+.activity-log {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.activity-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.activity-title-row h3 {
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin: 0;
+}
+
+.activity-title-row span {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+}
+
+.activity-details p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+.activity-log-empty {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+}
+
+.activity-log-empty p {
+  margin: 0;
+}
+
+/* User Management */
+.user-management {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.user-management .section-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.users-table-wrapper {
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.users-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.user-cell-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.user-cell strong {
+  color: var(--text-primary);
+  display: block;
+  font-weight: 600;
+}
+
+.user-cell span {
+  color: var(--text-muted);
+  display: block;
+  font-size: var(--font-size-xs);
+  margin-top: 2px;
+}
+
+.role-badge {
+  align-items: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  padding: 4px 10px;
+  text-transform: capitalize;
+}
+
+.role-admin {
+  background: rgba(102, 126, 234, 0.12);
+  color: #667eea;
+}
+
+.role-vendor {
+  background: rgba(246, 173, 85, 0.16);
+  color: #dd6b20;
+}
+
+.status-badge.active {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.status-badge.inactive {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.user-list-loading,
+.user-management-empty {
+  padding: var(--spacing-md);
+}
+
+.user-management-empty p {
+  color: var(--text-muted);
+  margin: 0;
+  text-align: center;
+}
+
 /* Charts */
 .chart-container {
   background: var(--bg-primary);
@@ -332,6 +521,12 @@
 
   .stat-value {
     font-size: var(--font-size-xl);
+  }
+
+  .activity-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
   }
 }
 

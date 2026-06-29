@@ -39,6 +39,21 @@ export const register = createAsyncThunk(
   }
 );
 
+export const updateProfile = createAsyncThunk(
+  "auth/updateProfile",
+  async (profileData, { rejectWithValue }) => {
+    try {
+      const response = await apiClient.put("/users/profile", profileData);
+      toast.success("Profile updated successfully");
+      return response.data;
+    } catch (error) {
+      const message = error.response?.data?.message || "Failed to update profile";
+      toast.error(message);
+      return rejectWithValue(message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
@@ -46,6 +61,21 @@ export const logout = createAsyncThunk(
       await authAPI.logout();
     } catch (error) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resendVerification = createAsyncThunk(
+  "auth/resendVerification",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await apiClient.post("/auth/resend-verification", { email });
+      toast.success("Verification email resent successfully");
+      return response.data;
+    } catch (error) {
+      const message = error.response?.data?.message || "Failed to resend verification";
+      toast.error(message);
+      return rejectWithValue(message);
     }
   }
 );

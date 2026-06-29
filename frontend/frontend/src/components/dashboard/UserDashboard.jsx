@@ -18,7 +18,6 @@ import { fetchCart } from '../../redux/slices/cartSlice';
 import DashboardLayout from './DashboardLayout';
 import DashboardStats from './DashboardStats';
 import RecentOrders from './RecentOrders';
-import ActivityLog from './ActivityLog';
 import { formatCurrency } from '../../utils/helpers';
 import '../../styles/dashboard.css';
 

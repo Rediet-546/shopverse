@@ -16,10 +16,11 @@ import {
   FaDownload,
   FaSyncAlt,
   FaShoppingBag,
-  FaClock
+  FaClock,
+  FaCheckCircle
 } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
-import { fetchVendorOrder, updateOrderStatus } from '../../redux/slices/orderSlice';
+import { fetchOrder, updateOrderStatus } from '../../redux/slices/orderSlice'; // Changed from fetchVendorOrder to fetchOrder
 import OrderStatusBadge from './OrderStatusBadge';
 import OrderItems from './OrderItems';
 import OrderTimeline from './OrderTimeline';
@@ -44,7 +45,7 @@ const VendorOrderDetails = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchVendorOrder(id));
+      dispatch(fetchOrder(id)); // Changed from fetchVendorOrder to fetchOrder
     }
   }, [dispatch, id]);
 
@@ -54,7 +55,7 @@ const VendorOrderDetails = () => {
       await dispatch(updateOrderStatus({ orderId: id, status })).unwrap();
       toast.success(`Order status updated to ${status}`);
       setShowStatusModal(false);
-      dispatch(fetchVendorOrder(id));
+      dispatch(fetchOrder(id)); // Changed from fetchVendorOrder to fetchOrder
     } catch (error) {
       toast.error(error || 'Failed to update status');
     } finally {
@@ -67,7 +68,7 @@ const VendorOrderDetails = () => {
   };
 
   const handleRefresh = () => {
-    dispatch(fetchVendorOrder(id));
+    dispatch(fetchOrder(id)); // Changed from fetchVendorOrder to fetchOrder
     toast.success('Order refreshed');
   };
 

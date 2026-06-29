@@ -16,9 +16,7 @@ import {
   FaCheck,
   FaTimes,
   FaClock,
-  FaShippingFast,
-  FaPackage
-} from 'react-icons/fa';
+  FaShippingFast} from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { fetchOrder, updateOrderStatus, cancelOrder } from '../../redux/slices/orderSlice';
 import OrderItems from './OrderItems';
@@ -137,7 +135,7 @@ const OrderDetails = () => {
       {/* Quick Stats */}
       <div className="order-quick-stats">
         <div className="stat-item">
-          <FaPackage className="stat-icon" />
+          <FaBox className="stat-icon" />
           <div className="stat-content">
             <span className="stat-label">Total Items</span>
             <span className="stat-value">{order.items?.length || 0}</span>
