@@ -15,6 +15,12 @@ class RabbitMQ {
 
   async connect() {
     try {
+      if (process.env.USE_RABBITMQ === 'false') {
+        logger.info('RabbitMQ disabled via USE_RABBITMQ=false, skipping connection');
+        this.isConnected = false;
+        return null;
+      }
+
       if (this.isConnected) {
         logger.info('RabbitMQ already connected');
         return this.channel;

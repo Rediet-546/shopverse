@@ -30,6 +30,8 @@ const logger = require('./utils/logger');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const USE_REDIS = process.env.USE_REDIS !== 'false';
+const USE_RABBITMQ = process.env.USE_RABBITMQ !== 'false';
 
 // ============================================
 // MIDDLEWARE SETUP
@@ -94,13 +96,21 @@ app.get('/health', async (req, res) => {
       healthStatus.services.database = 'disconnected';
     }
 
-    // Check Redis
-    try {
-      const { redisClient } = require('./config/redis');
-      await redisClient.ping();
-      healthStatus.services.redis = 'connected';
-    } catch (error) {
-      healthStatus.services.redis = 'disconnected';
+    // Check Redis only when enabled
+    if (USE_REDIS) {
+      try {
+        const { redisClient } = require('./config/redis');
+        await redisClient.ping();
+        healthStatus.services.redis = 'connected';
+      } catch (error) {
+        healthStatus.services.redis = 'disconnected';
+      }
+    } else {
+      healthStatus.services.redis = 'disabled';
+    }
+
+    if (!USE_RABBITMQ) {
+      healthStatus.services.rabbitmq = 'disabled';
     }
 
     res.status(200).json(healthStatus);
@@ -167,13 +177,21 @@ const startServer = async () => {
     await connectDB();
     logger.info('✅ Database connected successfully');
 
-    // Connect to Redis
-    await connectRedis();
-    logger.info('✅ Redis connected successfully');
+    // Connect to Redis when enabled
+    if (USE_REDIS) {
+      await connectRedis();
+      logger.info('✅ Redis connected successfully');
+    } else {
+      logger.info('Redis disabled via USE_REDIS=false, skipping connection');
+    }
 
-    // Connect to RabbitMQ
-    await connectRabbitMQ();
-    logger.info('✅ RabbitMQ connected successfully');
+    // Connect to RabbitMQ when enabled
+    if (USE_RABBITMQ) {
+      await connectRabbitMQ();
+      logger.info('✅ RabbitMQ connected successfully');
+    } else {
+      logger.info('RabbitMQ disabled via USE_RABBITMQ=false, skipping connection');
+    }
 
     // Start server
     server = app.listen(PORT, () => {

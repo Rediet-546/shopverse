@@ -12,6 +12,12 @@ class RedisClient {
 
   async connect() {
     try {
+      if (process.env.USE_REDIS === 'false') {
+        logger.info('Redis disabled via USE_REDIS=false, skipping connection');
+        this.isConnected = false;
+        return null;
+      }
+
       if (this.isConnected) {
         logger.info('Redis already connected');
         return this.client;
