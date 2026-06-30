@@ -39,6 +39,9 @@ import ProductsList from './components/products/ProductsList';
 import ProductDetails from './components/products/ProductDetails';
 import ProductForm from './components/products/ProductForm';
 
+// AI - Chat Widget
+import ChatWidget from './components/ai/ChatWidget';
+
 // Styles
 import './styles/global.css';
 
@@ -196,6 +199,9 @@ const App = () => {
                   </Routes>
                 </main>
                 <Footer />
+                
+                {/* ✅ ChatWidget - Placed outside main but inside the app container */}
+                <ChatWidget />
               </div>
             </CartProvider>
           </AuthProvider>
